@@ -11,8 +11,15 @@ body {
 
     color: white;
 
-    background-image: url("fundo.jpg");
-    background-size: cover;
+    background-image: inear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+        url("fundo.jpg");
+    background-size: 50px 50px, 50px 50px, cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+estrela1 {
+    top: 50px;
+    left: 500px;
 }
