@@ -17,7 +17,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.estrelaa{
+.estrela{
     position: absolute;
     width: 30px;
     height: 30px;
@@ -27,32 +27,32 @@ body {
     cursor: pointer;
 }
 
-.estrelaa1{
+.estrela1{
     top: 80px;
     left: 350px;
 }
 
-.estrelaa2{
+.estrela2{
     top: 250px;
     left: 350px;
 }
 
-.estrelaa3{
+.estrela3{
     top: 140px;
     left: 550px;
 }
 
-.estrelaa4{
+.estrela4{
     top: 70px;
     left: 700px;
 }
 
-.estrelaa5{
+.estrela5{
     top: 260px;
     left: 750px;
 }
 
-.estrelaa6{
+.estrela6{
     top: 110px;
     left: 850px;
 }
