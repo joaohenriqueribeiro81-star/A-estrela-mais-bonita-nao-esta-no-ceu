@@ -18,13 +18,51 @@ body {
 }
 
 .estrela{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("estrelaa.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
+    position:absolute;
+    cursor:pointer;
+}
+
+.icone{
+    width:40px;
+
+    animation: brilho 2.5s ease-in-out infinite;
+
+    transition: transform .3s ease,
+                filter .3s ease;
+}
+
+.estrela:hover .icone{
+
+    transform:scale(1.5);
+
+    filter:
+        drop-shadow(0 0 8px white)
+        drop-shadow(0 0 18px white);
+
+}
+
+.carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top:-40px;
+
+    width:260px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.4s;
+
+}
+
+.estrela:hover .carta{
+
+    opacity:1;
+
 }
 
 .estrela1{
