@@ -8,18 +8,20 @@ body {
     flex-direction: column;
 
     text-align: center;
-
     color: white;
 
-    background-image: inear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
         url("fundo.jpg");
+
     background-size: 50px 50px, 50px 50px, cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-estrela1 {
+.estrela1 {
+    position: absolute;
     top: 50px;
     left: 500px;
 }
