@@ -28,16 +28,31 @@ body {
 }
 
 .estrela1{
-    top: 120px;
-    left: 250px;
+    top: 80px;
+    left: 350px;
 }
 
 .estrela2{
-    top: 300px;
-    left: 600px;
+    top: 250px;
+    left: 350px;
 }
 
 .estrela3{
-    top: 500px;
-    left: 100px;
+    top: 140px;
+    left: 550px;
+}
+
+.estrela4{
+    top: 70px;
+    left: 700px;
+}
+
+.estrela5{
+    top: 260px;
+    left: 750px;
+}
+
+.estrela6{
+    top: 110px;
+    left: 850px;
 }
