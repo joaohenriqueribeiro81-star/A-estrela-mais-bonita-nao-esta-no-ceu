@@ -19,8 +19,8 @@ body {
 
 .estrela{
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-image: url("estrelaa.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@ body {
 }
 
 .estrela1{
-    top: 80px;
+    top: 88px;
     left: 350px;
 }
 
@@ -42,4 +42,17 @@ body {
     left: 550px;
 }
 
+.estrela4{
+    top: 70px;
+    left: 700px;
+}
 
+.estrela5{
+    top: 260px;
+    left: 750px;
+}
+
+.estrela6{
+    top: 110px;
+    left: 850px;
+}
