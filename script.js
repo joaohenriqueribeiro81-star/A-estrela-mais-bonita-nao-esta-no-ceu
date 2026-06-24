@@ -1,5 +1,7 @@
 let progresso = 0;
 
+let intervaloCeu = null;
+
 const ordem = [
     "estrela1",
     "estrela2",
@@ -10,7 +12,6 @@ const ordem = [
 ];
 
 function criarEstrela(){
-    console.log("criando estrela");
 
     const estrela = document.createElement("img");
     estrela.src = "estrelaa.png";
@@ -27,9 +28,12 @@ function criarEstrela(){
 }
 
 function iniciarCeu(){
+
+    if(intervaloCeu) return;
+
     console.log("ceu iniciado");
 
-    setInterval(criarEstrela, 400);
+    intervaloCeu = setInterval(criarEstrela, 400);
 }
 
 function resetarProgresso(){
@@ -37,16 +41,6 @@ function resetarProgresso(){
     progresso = 0;
 
     console.log("resetou");
-
-    // opcional: feedback visual
-    document.querySelectorAll(".estrela").forEach(el => {
-        el.classList.remove("ativa");
-        el.classList.add("erro");
-
-        setTimeout(() => {
-            el.classList.remove("erro");
-        }, 400);
-    });
 }
 
 function marcarEstrela(nome){
@@ -60,7 +54,6 @@ function marcarEstrela(nome){
 
     progresso++;
 
-    // chegou ao final
     if(progresso === ordem.length){
         iniciarCeu();
     }
