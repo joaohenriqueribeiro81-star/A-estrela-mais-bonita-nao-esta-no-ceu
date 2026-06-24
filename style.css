@@ -35,7 +35,7 @@ body {
     left: 0;
 
     width: 100vw;
-    height: 70vh; /* <<< ISSO É O TRUQUE */
+    height: 45vh; /* <<< ISSO É O TRUQUE */
 
     pointer-events: none;
     overflow: hidden;
