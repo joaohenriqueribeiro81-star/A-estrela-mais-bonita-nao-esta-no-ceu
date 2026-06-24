@@ -65,6 +65,7 @@ function abrirCartaFinal(){
 
     carta.style.opacity = 1;
     carta.style.transform = "translate(-50%, -50%) scale(1)";
+    carta.style.pointerEvents = "auto";
 }
 
 function fecharCarta(){
@@ -73,4 +74,5 @@ function fecharCarta(){
 
     carta.style.opacity = 0;
     carta.style.transform = "translate(-50%, -50%) scale(0.8)";
+    carta.style.pointerEvents = "none";
 }
