@@ -1,3 +1,5 @@
+let progresso = 0;
+
 const ordem = [
     "estrela1",
     "estrela2",
@@ -30,16 +32,35 @@ function iniciarCeu(){
     setInterval(criarEstrela, 400);
 }
 
+function resetarProgresso(){
+
+    progresso = 0;
+
+    console.log("resetou");
+
+    // opcional: feedback visual
+    document.querySelectorAll(".estrela").forEach(el => {
+        el.classList.remove("ativa");
+        el.classList.add("erro");
+
+        setTimeout(() => {
+            el.classList.remove("erro");
+        }, 400);
+    });
+}
+
 function marcarEstrela(nome){
 
     const esperado = ordem[progresso];
 
     if(nome !== esperado){
-        return; // ignorar se não for a próxima da sequência
+        resetarProgresso();
+        return;
     }
 
     progresso++;
 
+    // chegou ao final
     if(progresso === ordem.length){
         iniciarCeu();
     }
