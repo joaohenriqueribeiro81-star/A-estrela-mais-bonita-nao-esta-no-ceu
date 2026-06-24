@@ -58,3 +58,11 @@ function marcarEstrela(nome){
         iniciarCeu();
     }
 }
+
+function abrirCartaFinal(){
+
+    const carta = document.querySelector(".cartaFinal");
+
+    carta.style.opacity = 1;
+    carta.style.transform = "translate(-50%, -50%) scale(1)";
+}
