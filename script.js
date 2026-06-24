@@ -1,5 +1,3 @@
-console.log("SCRIPT OK");
-
 function criarEstrela(){
     console.log("criando estrela");
 
@@ -7,10 +5,10 @@ function criarEstrela(){
     estrela.src = "estrelaa.png";
     estrela.classList.add("decorativa");
 
-    estrela.style.left = Math.random() * 95 + "%";
-    estrela.style.top = Math.random() * 95 + "%";
+    estrela.style.left = Math.random() * 100 + "%";
+    estrela.style.top = Math.random() * 100 + "%";
 
-    document.body.appendChild(estrela);
+    document.querySelector(".ceu").appendChild(estrela);
 
     estrela.addEventListener("animationend", () => {
         estrela.remove();
