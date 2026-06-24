@@ -133,6 +133,20 @@ body {
     left: 81%;
 }
 
+.easter-egg{
+    position: absolute;
+
+    top: 60%;
+    left: 45%;
+
+    width: 120px;
+    height: 120px;
+
+    background: transparent;
+
+    cursor: default; /* <- isso aqui é o segredo */
+}
+
 @keyframes brilho {
     0% {
         transform: scale(1);
