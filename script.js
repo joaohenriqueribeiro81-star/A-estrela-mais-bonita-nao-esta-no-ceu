@@ -62,6 +62,7 @@ function marcarEstrela(nome){
 function abrirCartaFinal(){
 
     const carta = document.querySelector(".cartaFinal");
+    console.log("Abriu");
 
     carta.style.opacity = 1;
     carta.style.transform = "translate(-50%, -50%) scale(1)";
@@ -71,6 +72,7 @@ function abrirCartaFinal(){
 function fecharCarta(){
 
     const carta = document.querySelector(".cartaFinal");
+    console.log("fechou");
 
     carta.style.opacity = 0;
     carta.style.transform = "translate(-50%, -50%) scale(0.8)";
