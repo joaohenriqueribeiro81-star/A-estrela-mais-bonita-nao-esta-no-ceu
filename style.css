@@ -136,11 +136,11 @@ body {
 .easter-egg{
     position: absolute;
 
-    top: 60%;
-    left: 45%;
+    top: 50%;
+    left: 29%;
 
-    width: 120px;
-    height: 120px;
+    width: 400px;
+    height: 340px;
 
     background: transparent;
 
