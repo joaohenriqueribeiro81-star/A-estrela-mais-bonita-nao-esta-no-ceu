@@ -33,8 +33,10 @@ body {
 
 .estrela:hover .icone{
 
-    transform:scale(1.5);
+    transform:scale(2);
 
+    animation: brilhoHover 1.2s ease-in-out infinite;
+    
     filter:
         drop-shadow(0 0 8px white)
         drop-shadow(0 0 18px white);
@@ -55,7 +57,13 @@ body {
 
     pointer-events:none;
 
-    transition:.4s;
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 20;
 
 }
 
@@ -63,6 +71,12 @@ body {
 
     opacity:1;
 
+    transform:translateX(0);
+
+}
+
+.estrela:hover{
+    z-index:10;
 }
 
 .estrela1{
@@ -93,4 +107,38 @@ body {
 .estrela6{
     top: 32%;
     left: 81%;
+}
+
+@keyframes brilho {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px white);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 12px white);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px white);
+        opacity: 0.7;
+    }
+}
+
+@keyframes brilhoHover {
+    0% {
+        filter: drop-shadow(0 0 10px white);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px white);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 10px white);
+    }
 }
