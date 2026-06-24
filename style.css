@@ -134,7 +134,15 @@ body {
         filter: drop-shadow(0 0 10px white);
     }
 
+    25% {
+        filter: drop-shadow(0 0 20px white);
+    }  
+
     50% {
+        filter: drop-shadow(0 0 10px white);
+    }
+
+    75% {
         filter: drop-shadow(0 0 20px white);
     }
 
