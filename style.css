@@ -17,6 +17,18 @@ body {
     background-repeat: no-repeat;
 }
 
+.decorativa{
+
+    position:absolute;
+
+    width:18px;
+
+    pointer-events:none;
+
+    animation:estrelaDecorativa 3s linear forwards;
+
+}
+
 .estrela{
     position:absolute;
     cursor:pointer;
@@ -149,4 +161,32 @@ body {
     100% {
         filter: drop-shadow(0 0 10px white);
     }
+}
+
+@keyframes estrelaDecorativa {
+
+    0%{
+        opacity:0;
+        transform:scale(0.3);
+        filter:drop-shadow(0 0 0px white);
+    }
+
+    25%{
+        opacity:1;
+        transform:scale(1);
+        filter:drop-shadow(0 0 10px white);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(0.8);
+        filter:drop-shadow(0 0 6px white);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+        filter:drop-shadow(0 0 0px white);
+    }
+
 }
