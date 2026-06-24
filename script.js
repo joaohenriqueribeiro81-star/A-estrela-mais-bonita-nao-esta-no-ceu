@@ -2,6 +2,8 @@ let progresso = 0;
 
 let intervaloCeu = null;
 
+const inicio = new Date("2025-12-28T17:40:00");
+
 const ordem = [
     "estrela1",
     "estrela2",
@@ -34,6 +36,8 @@ function iniciarCeu(){
     console.log("ceu iniciado");
 
     intervaloCeu = setInterval(criarEstrela, 400);
+
+    let 
 }
 
 function resetarProgresso(){
@@ -78,3 +82,19 @@ function fecharCarta(){
     carta.style.transform = "translate(-50%, -50%) scale(0.8)";
     carta.style.pointerEvents = "none";
 }
+
+function atualizarContador(){
+    const agora = new Date();
+    const diferenca = agora - inicio;
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / (1000)) % 60);
+
+    document.getElementById("contador").innerHTML =
+    `${dias} Dias ${horas} Horas ${minutos} Minutos ${segundos} Segundos`;
+}
+
+setInterval(atualizarContador,1000);
+
+atualizarContador();
