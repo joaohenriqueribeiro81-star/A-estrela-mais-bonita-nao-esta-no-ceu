@@ -21,12 +21,24 @@ body {
 
     position:absolute;
 
-    width:18px;
+    width:50px;
 
     pointer-events:none;
 
     animation:estrelaDecorativa 3s linear forwards;
 
+}
+
+.ceu{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 70vh; /* <<< ISSO É O TRUQUE */
+
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .estrela{
