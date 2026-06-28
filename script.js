@@ -289,8 +289,8 @@ function spawnFloatingImage() {
     img.style.top = `${y}px`;
 
     // Tamanho inicial aleatório
-    const tamanho = 50 + Math.random() * 50;
-    img.style.width = `${tamanho}px`;
+    const tamanho = 3 + Math.random() * 2;
+    img.style.width = `${tamanho}vw`;
 
     // Velocidade aleatória
     const duration = 3500 + Math.random() * 2500;
