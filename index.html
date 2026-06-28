@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Isso Está Além do que Vemos</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -31,12 +32,52 @@
 </div>
 
     <div class="easter-egg" onclick="abrirCartaFinal()"></div>
-    <div class="cartaFinal" onclick="fecharCarta()">
-    <img src="carta.jpg">
-    <div id="contador"></div>
-    </div>
-    
+
+    <div class="cartaFinal">
+    <img src="pagina1.png" class="cartaPilha" onclick="proximaCarta(this)">
+    <img src="pagina2.png" class="cartaPilha" onclick="proximaCarta(this)">
+    <img src="pagina3.png" class="cartaPilha" onclick="proximaCarta(this)">
+    <img src="pagina4.png" class="cartaPilha" onclick="proximaCarta(this)">
+</div>
+
+    <audio id="musica" loop>
+    <source src="musica.mpeg" type="audio/mpeg">
+</audio>
     <div class="ceu"></div>
+    <div class="lua" onclick="lua()">
+        <img src="lua.png">
+    </div>
+    <div class="menu">
+    <img src="menu.jpeg" alt="Tutorial">
+    <button class="fechar-menu" onclick="fecharMenu()">✕</button>
+</div>
+    <div class="layout">
+        <img src="layout.jpeg">
+    </div>
+    <div class="luacarta" onclick="luacarta()">
+        <img src="luacarta.png">
+        <div id="contador"></div>
+        <div id="balao"></div>
+        </div>
+    </div>
+    <div class="casa" onclick="abrirCasa()"></div>
+    <div class="abrirCasa" onclick="fecharCasa()">
+        <img src="casa.png">
+    </div>
+
+    <div id="progresso">
+
+    <img id="pEstrela" src="estrelaApagada.png">
+
+    <img id="pLua" src="luaApagada.png">
+
+    <img id="pCasal" src="casalApagado.png">
+
+    <img id="pCasa" src="casaApagada.png">
+
+    </div>
+
+    <div id="animation-layer"></div>
 
     <script src="script.js"></script>
 </body>
