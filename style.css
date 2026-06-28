@@ -57,11 +57,11 @@ body {
 
 .fechar-menu{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 2%;
+    right: 2%;
 
-    width: 45px;
-    height: 45px;
+    width: 4vw;
+    height: 4vh;
 
     border: none;
     border-radius: 50%;
@@ -69,7 +69,7 @@ body {
     background: rgba(0,0,0,.6);
     color: white;
 
-    font-size: 28px;
+    font-size: 2vw;
     cursor: pointer;
 
     transition: .2s;
