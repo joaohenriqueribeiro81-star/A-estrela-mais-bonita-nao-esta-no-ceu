@@ -1,385 +1,635 @@
-let progresso = 0;
+body {
+    margin: 0;
+    height: 100vh;
 
-let intervaloCeu = null;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-let luaberta = false;
+    text-align: center;
+    color: white;
 
-let dialogoRodando = false;
+    background-image: url("fundo.jpg");
 
-let etapas = {
-    casona: false,
-    estrelado: false,
-    casalzao: false,
-    luar: false
-};
-
-let chuva = null;
-
-let animacaoIniciada = false;
-
-const inicio = new Date("2025-12-28T17:00:00");
-
-const musica = document.getElementById("musica")
-
-const ordem = [
-    "estrela1",
-    "estrela2",
-    "estrela3",
-    "estrela4",
-    "estrela5",
-    "estrela6"
-];
-
-const images = [
-  "coracao.png",
-  "teamo.png",
-  "teamocoracao.png"
-];
-
-function criarEstrela(){
-
-    const estrela = document.createElement("img");
-    estrela.src = "estrelaa.png";
-    estrela.classList.add("decorativa");
-
-    estrela.style.left = Math.random() * 100 + "%";
-    estrela.style.top = Math.random() * 100 + "%";
-
-    document.querySelector(".ceu").appendChild(estrela);
-
-    estrela.addEventListener("animationend", () => {
-        estrela.remove();
-
-    if (etapas.estrelado) return;
-    etapas.estrelado = true;
-
-    verificarConclusao();
-
-    });
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-function iniciarCeu(){
+.decorativa{
 
-    if(intervaloCeu) return;
+    position:absolute;
 
-    musica.play();
+    width:50px;
 
-    console.log("ceu iniciado");
+    pointer-events:none;
 
-    document.getElementById("pEstrela").classList.add("descoberto");
+    animation:estrelaDecorativa 3s linear forwards;
 
-    intervaloCeu = setInterval(criarEstrela, 200);
+    z-index: 10;
 
 }
 
-function resetarProgresso(){
+.ceu{
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    progresso = 0;
+    width: 100vw;
+    height: 45vh; /* <<< ISSO É O TRUQUE */
 
-    console.log("resetou");
+    pointer-events: none;
+    overflow: hidden;
+}
 
-    document.getElementById("pEstrela").classList.add("descoberto");
+.menu{
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+
+.menu img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fechar-menu{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.6);
+    color: white;
+
+    font-size: 28px;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.fechar-menu:hover{
+    transform: scale(1.1);
+    background: rgba(0,0,0,.8);
+}
+
+.layout img{
+    position:absolute;
+    top: 70%;
+    left: 0;
+    width: 16vw;
+    height: auto;
+    z-index: 20;
+}
+
+.lua img{
+    position:absolute;
+    cursor:pointer;
+    top: 3%;
+    left: 2%;
+    width: 10vw;
+    height: auto;
+    z-index: 20;
+}
+
+.luacarta{
+    position: fixed;
+    cursor:pointer;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.8);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    z-index: 25;
+}
+
+.luacarta img{
+    width: 60vw;
+    height: auto;
+}
+
+#balao{
+
+    position:absolute;
+
+    top:25%;
+    left:80%;
+
+    transform:translateX(-50%) scale(.8);
+
+    max-width:320px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:white;
+
+    color:black;
+
+    font-size:20px;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:
+        opacity .4s,
+        transform .4s;
+}
+
+.estrela{
+    position:absolute;
+    cursor:pointer;
+}
+
+.icone{
+    width:40px;
+
+    animation: brilho 2.5s ease-in-out infinite;
+
+    transition: transform .3s ease,
+                filter .3s ease;
+}
+
+.estrela:hover .icone{
+
+    transform:scale(2);
+
+    animation: brilhoHover 1.2s ease-in-out infinite;
+    
+    filter:
+        drop-shadow(0 0 8px white)
+        drop-shadow(0 0 18px white);
 
 }
 
-function marcarEstrela(nome){
+.estrela1 .carta{
 
-    const esperado = ordem[progresso];
+    position:absolute;
 
-    if(nome !== esperado){
-        resetarProgresso();
-        return;
+    left:55px;
+
+    top:-40px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela2 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top: -100px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela3 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top:-40px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela4 .carta{
+
+    position:absolute;
+
+    right:55px;
+
+    top: 20px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela5 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top:-80px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela6 .carta{
+
+    position:absolute;
+
+    right:55px;
+
+    top:-40px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela:hover .carta{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+    z-index: 50;
+
+}
+
+.estrela:hover{
+    z-index:50;
+}
+
+.estrela1{
+    top: 10%;
+    left: 20%;
+    z-index:15;
+}
+
+.estrela2{
+    top: 40%;
+    left: 30%;
+    z-index:15;
+}
+
+.estrela3{
+    top: 20%;
+    left: 45%;
+    z-index:15;
+}
+
+.estrela4{
+    top: 5%;
+    left: 70%;
+    z-index:15;
+}
+
+.estrela5{
+    top: 33%;
+    left: 62%;
+    z-index:15;
+}
+
+.estrela6{
+    top: 32%;
+    left: 81%;
+    z-index:15;
+}
+
+.easter-egg{
+    position: absolute;
+
+    top: 50%;
+    left: 32%;
+
+    width: 40vw;
+    height: 50vh;
+
+    background: transparent;
+
+    cursor: default;
+}
+
+.casa{
+    position: absolute;
+
+    top: 70%;
+    right: 11%;
+
+    width: 7vw;
+    height: 7vh;
+
+    background: transparent;
+
+    cursor: default;
+}
+
+.abrirCasa{
+    position: fixed;
+    cursor:pointer;
+    top: 50%;
+    left: 45%;
+
+    transform: translate(-50%, -50%) scale(0.8);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    z-index: 25;
+}
+
+.abrirCasa img{
+    width: 120%;
+    height: 120%;
+}
+
+.cartaFinal{
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+    z-index: 9999;
+}
+
+.cartaPilha{
+    position: absolute;
+    height: 82vh;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+/* efeito de pilha */
+.cartaPilha:nth-child(1){ transform: translate(0,0); z-index: 24; }
+.cartaPilha:nth-child(2){ transform: translate(-20px,-20px); z-index: 23; }
+.cartaPilha:nth-child(3){ transform: translate(-40px,-40px); z-index: 22; }
+.cartaPilha:nth-child(4){ transform: translate(-60px,-60px); z-index: 21; }
+
+.descoberto{
+    filter: grayscale(0%) drop-shadow(0 0 10px white);
+    opacity: 1;
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+@keyframes brilho {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px white);
+        opacity: 0.7;
     }
 
-    progresso++;
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 12px white);
+        opacity: 1;
+    }
 
-    if(progresso === ordem.length){
-        iniciarCeu();
-        luaberta = true;
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px white);
+        opacity: 0.7;
     }
 }
 
-function abrirCartaFinal(){
+@keyframes brilhoHover {
+    0% {
+        filter: drop-shadow(0 0 10px white);
+    }
 
-    resetarPilha(); // <<< ESSA LINHA É A CHAVE
+    25% {
+        filter: drop-shadow(0 0 20px white);
+    }  
 
-    const carta = document.querySelector(".cartaFinal");
+    50% {
+        filter: drop-shadow(0 0 10px white);
+    }
 
-    carta.style.opacity = 1;
-    carta.style.pointerEvents = "auto";
-    document.getElementById("pCasal").classList.add("descoberto");
+    75% {
+        filter: drop-shadow(0 0 20px white);
+    }
 
-    if (etapas.casalzao) return;
-    etapas.casalzao = true;
-
-    verificarConclusao();
-}
-
-function proximaCarta(el){
-
-    el.style.transform = "translateX(-400px) rotate(-15deg)";
-    el.style.opacity = "0";
-
-    setTimeout(() => {
-        el.remove();
-
-        const restantes = document.querySelectorAll(".cartaPilha");
-
-        if(restantes.length === 0){
-            fecharCarta();
-        }
-
-    }, 400);
-}
-
-function fecharCarta(){
-    const carta = document.querySelector(".cartaFinal");
-
-    carta.style.opacity = 0;
-    carta.style.pointerEvents = "none";
-}
-
-function resetarPilha(){
-
-    const container = document.querySelector(".cartaFinal");
-
-    const cartas = [
-        "pagina1.png",
-        "pagina2.png",
-        "pagina3.png",
-        "pagina4.png"
-    ];
-
-    container.innerHTML = "";
-
-    cartas.forEach((src) => {
-
-        const img = document.createElement("img");
-
-        img.src = src;
-        img.className = "cartaPilha";
-        img.onclick = function(){
-            proximaCarta(this);
-        };
-
-        container.appendChild(img);
-    });
-}
-
-function lua(){
-
-    if(luaberta === true){
-        const luacarta = document.querySelector(".luacarta");
-
-        luacarta.style.opacity = 1;
-        luacarta.style.transform = "translate(-50%, -50%) scale(1)";
-        luacarta.style.pointerEvents = "auto";
-        document.getElementById("pLua").classList.add("descoberto");
-        iniciarDialogo();
-        
-        if (etapas.luar) return;
-        etapas.luar = true;
-
-        verificarConclusao();
-
+    100% {
+        filter: drop-shadow(0 0 10px white);
     }
 }
 
-function luacarta(){
+@keyframes estrelaDecorativa {
 
-    const luacarta = document.querySelector(".luacarta");
-
-    luacarta.style.opacity = 0;
-    luacarta.style.transform = "translate(-50%, -50%) scale(0.8)";
-    luacarta.style.pointerEvents = "none";
-
-    dialogoRodando = false;
-}
-
-function abrirCasa(){
-
-     const abrirCasa = document.querySelector(".abrirCasa");
-
-    document.getElementById("pCasa").classList.add("descoberto");
-    abrirCasa.style.opacity = 1;
-    abrirCasa.style.transform = "translate(-50%, -50%) scale(1)";
-    abrirCasa.style.pointerEvents = "auto";
-
-    if (etapas.casona) return;
-    etapas.casona = true;
-
-    verificarConclusao();
-
-}
-
-function fecharCasa(){
-
-    const abrirCasa = document.querySelector(".abrirCasa");
-
-    abrirCasa.style.opacity = 0;
-    abrirCasa.style.transform = "translate(-50%, -50%) scale(0.8)";
-    abrirCasa.style.pointerEvents = "none";
-
-}
-
-function fecharMenu(){
-
-    document.querySelector(".menu").style.display = "none";
-
-}
-
-function atualizarContador(){
-    const agora = new Date();
-    const diferenca = agora - inicio;
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-    const segundos = Math.floor((diferenca / (1000)) % 60);
-
-    document.getElementById("contador").innerHTML =
-    `${dias} Dias ${horas} Horas ${minutos} Minutos ${segundos} Segundos`;
-}
-
-function verificarConclusao() {
-    console.log(etapas);
-
-    if (animacaoIniciada) return;
-
-    if (
-        etapas.casona &&
-        etapas.casalzao &&
-        etapas.luar &&
-        etapas.estrelado
-    ) {
-        animacaoIniciada = true;
-
-        iniciarChuva();
-
-        console.log("Animação chamada");
+    0%{
+        opacity:0;
+        transform:scale(0.3);
+        filter:drop-shadow(0 0 0px white);
     }
-}
 
-function iniciarChuva() {
+    25%{
+        opacity:1;
+        transform:scale(1);
+        filter:drop-shadow(0 0 10px white);
+    }
 
-    if (chuva) return;
+    70%{
+        opacity:1;
+        transform:scale(0.8);
+        filter:drop-shadow(0 0 6px white);
+    }
 
-    chuva = setInterval(() => {
-        spawnFloatingImage();
-    }, 120);
-
-}
-
-function spawnFloatingImage() {
-
-    const layer = document.getElementById("animation-layer");
-
-    const img = document.createElement("img");
-    img.classList.add("floating-img");
-
-    // Escolhe uma imagem aleatória
-    img.src = images[Math.floor(Math.random() * images.length)];
-
-    // Posição horizontal aleatória
-    const x = Math.random() * window.innerWidth;
-
-    // Sempre nasce no chão
-    const y = window.innerHeight + 20;
-
-    img.style.left = `${x}px`;
-    img.style.top = `${y}px`;
-
-    // Tamanho inicial aleatório
-    const tamanho = 50 + Math.random() * 50;
-    img.style.width = `${tamanho}px`;
-
-    // Velocidade aleatória
-    const duration = 3500 + Math.random() * 2500;
-
-    img.style.animationDuration = `${duration}ms`;
-
-    layer.appendChild(img);
-
-    setTimeout(() => {
-        img.remove();
-    }, duration);
-}
-
-setInterval(atualizarContador,1000);
-
-atualizarContador();
-
-const frases = [
-
-"O que é isso João??",
-
-"O que é isso?",
-
-"As alianças chegaram!",
-
-"Mas o que é isso?"
-
-];
-
-function esperar(ms){
-
-    return new Promise(resolve=>setTimeout(resolve,ms));
-
-}
-
-async function escrever(texto){
-
-    const balao = document.getElementById("balao");
-
-    balao.innerHTML = "";
-
-    for(const letra of texto){
-
-        balao.innerHTML += letra;
-
-        await esperar(45);
-
+    100%{
+        opacity:0;
+        transform:scale(0);
+        filter:drop-shadow(0 0 0px white);
     }
 
 }
 
-async function mostrarBalao(texto){
 
-    const balao = document.getElementById("balao");
-
-    balao.style.opacity = 1;
-
-    balao.style.transform = "translateX(-50%) scale(1)";
-
-    await escrever(texto);
-
-    await esperar(2000);
-
-    balao.style.opacity = 0;
-
-    balao.style.transform = "translateX(-50%) scale(.8)";
-
-    await esperar(600);
-
+@keyframes erroShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
 }
 
-async function iniciarDialogo(){
+.erro{
+    animation: erroShake 0.3s;
+}
 
-    if(dialogoRodando) return;
+#contador{
 
-    dialogoRodando = true;
+    position:absolute;
+    white-space: nowrap;
 
-    while(dialogoRodando){
+    top:80%;
 
-        for(const frase of frases){
+    left:16%;
 
-            if(!dialogoRodando) return;
+    color: brown;
 
-            await mostrarBalao(frase);
+    font-size:2.6vw;
 
-            await esperar(1000);
-        }
+    font-family: fantasy;
 
-        await esperar(3000);
+    text-shadow: -6px 0px 1px black;
+
+    text-align: left;
+}
+
+#progresso{
+    position: absolute;
+    top: 79%;
+    left: 1.7%;
+
+    display: flex;
+    gap: 0.6vw;
+
+    align-items: center;
+    z-index: 30;
+}
+
+#progresso img{
+    width: 2.8vw;
+    filter: grayscale(100%);
+    opacity: .35;
+    transition: .5s;
+    z-index: 30;
+}
+
+#progresso img.descoberto{
+    filter: grayscale(0%) drop-shadow(0 0 10px white);
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 30;
+}
+
+#pEstrela { order: 1; }
+#pLua { order: 2; }
+#pCasal { order: 3; }
+#pCasa { order: 4; }
+
+#animation-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.floating-img{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+
+    animation-name:floatUp;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) scale(0.3);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-60vh) scale(1.5);
+        opacity:0;
     }
 
 }
