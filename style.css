@@ -27,6 +27,8 @@ body {
 
     animation:estrelaDecorativa 3s linear forwards;
 
+    z-index: 10;
+
 }
 
 .ceu{
@@ -39,6 +41,113 @@ body {
 
     pointer-events: none;
     overflow: hidden;
+}
+
+.menu{
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+
+.menu img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fechar-menu{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.6);
+    color: white;
+
+    font-size: 28px;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.fechar-menu:hover{
+    transform: scale(1.1);
+    background: rgba(0,0,0,.8);
+}
+
+.layout img{
+    position:absolute;
+    top: 70%;
+    left: 0;
+    width: 16vw;
+    height: auto;
+    z-index: 20;
+}
+
+.lua img{
+    position:absolute;
+    cursor:pointer;
+    top: 3%;
+    left: 2%;
+    width: 10vw;
+    height: auto;
+    z-index: 20;
+}
+
+.luacarta{
+    position: fixed;
+    cursor:pointer;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.8);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    z-index: 25;
+}
+
+.luacarta img{
+    width: 60vw;
+    height: auto;
+}
+
+#balao{
+
+    position:absolute;
+
+    top:25%;
+    left:80%;
+
+    transform:translateX(-50%) scale(.8);
+
+    max-width:320px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:white;
+
+    color:black;
+
+    font-size:20px;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:
+        opacity .4s,
+        transform .4s;
 }
 
 .estrela{
@@ -67,7 +176,7 @@ body {
 
 }
 
-.carta{
+.estrela1 .carta{
 
     position:absolute;
 
@@ -75,7 +184,8 @@ body {
 
     top:-40px;
 
-    width:260px;
+    height:70vh;
+    width: auto;
 
     opacity:0;
 
@@ -87,7 +197,132 @@ body {
         opacity .35s,
         transform .35s;
 
-    z-index: 20;
+    z-index: 50;
+
+}
+
+.estrela2 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top: -100px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela3 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top:-40px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela4 .carta{
+
+    position:absolute;
+
+    right:55px;
+
+    top: 20px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela5 .carta{
+
+    position:absolute;
+
+    left:55px;
+
+    top:-80px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
+
+}
+
+.estrela6 .carta{
+
+    position:absolute;
+
+    right:55px;
+
+    top:-40px;
+
+    height:70vh;
+    width: auto;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateX(-15px);
+
+    transition:
+        opacity .35s,
+        transform .35s;
+
+    z-index: 50;
 
 }
 
@@ -97,60 +332,83 @@ body {
 
     transform:translateX(0);
 
+    z-index: 50;
+
 }
 
 .estrela:hover{
-    z-index:10;
+    z-index:50;
 }
 
 .estrela1{
     top: 10%;
-    left: 35%;
+    left: 20%;
+    z-index:15;
 }
 
 .estrela2{
     top: 40%;
-    left: 35%;
+    left: 30%;
+    z-index:15;
 }
 
 .estrela3{
     top: 20%;
-    left: 50%;
+    left: 45%;
+    z-index:15;
 }
 
 .estrela4{
     top: 5%;
     left: 70%;
+    z-index:15;
 }
 
 .estrela5{
     top: 33%;
     left: 62%;
+    z-index:15;
 }
 
 .estrela6{
     top: 32%;
     left: 81%;
+    z-index:15;
 }
 
 .easter-egg{
     position: absolute;
 
     top: 50%;
-    left: 29%;
+    left: 32%;
 
-    width: 400px;
-    height: 340px;
+    width: 40vw;
+    height: 50vh;
 
     background: transparent;
 
     cursor: default;
 }
 
-.cartaFinal{
+.casa{
+    position: absolute;
+
+    top: 70%;
+    right: 11%;
+
+    width: 7vw;
+    height: 7vh;
+
+    background: transparent;
+
+    cursor: default;
+}
+
+.abrirCasa{
     position: fixed;
+    cursor:pointer;
     top: 50%;
-    left: 50%;
+    left: 45%;
 
     transform: translate(-50%, -50%) scale(0.8);
 
@@ -159,12 +417,43 @@ body {
 
     transition: opacity 0.5s ease, transform 0.5s ease;
 
-    z-index: 999;
+    z-index: 25;
 }
 
-.cartaFinal img{
-    width: 320px; /* ajusta como quiser */
-    height: auto;
+.abrirCasa img{
+    width: 120%;
+    height: 120%;
+}
+
+.cartaFinal{
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+    z-index: 9999;
+}
+
+.cartaPilha{
+    position: absolute;
+    height: 82vh;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+/* efeito de pilha */
+.cartaPilha:nth-child(1){ transform: translate(0,0); z-index: 24; }
+.cartaPilha:nth-child(2){ transform: translate(-20px,-20px); z-index: 23; }
+.cartaPilha:nth-child(3){ transform: translate(-40px,-40px); z-index: 22; }
+.cartaPilha:nth-child(4){ transform: translate(-60px,-60px); z-index: 21; }
+
+.descoberto{
+    filter: grayscale(0%) drop-shadow(0 0 10px white);
+    opacity: 1;
+    transform: scale(1.1);
+    transition: .5s;
 }
 
 @keyframes brilho {
@@ -253,14 +542,94 @@ body {
 #contador{
 
     position:absolute;
+    white-space: nowrap;
 
-    top:180px;
+    top:80%;
 
-    left:80px;
+    left:16%;
 
-    color:black;
+    color: brown;
 
-    font-size:30px;
+    font-size:2.6vw;
+
+    font-family: fantasy;
+
+    text-shadow: -6px 0px 1px black;
 
     text-align: left;
+}
+
+#progresso{
+    position: absolute;
+    top: 79%;
+    left: 1.7%;
+
+    display: flex;
+    gap: 0.6vw;
+
+    align-items: center;
+    z-index: 30;
+}
+
+#progresso img{
+    width: 2.8vw;
+    filter: grayscale(100%);
+    opacity: .35;
+    transition: .5s;
+    z-index: 30;
+}
+
+#progresso img.descoberto{
+    filter: grayscale(0%) drop-shadow(0 0 10px white);
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 30;
+}
+
+#pEstrela { order: 1; }
+#pLua { order: 2; }
+#pCasal { order: 3; }
+#pCasa { order: 4; }
+
+#animation-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.floating-img{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+
+    animation-name:floatUp;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) scale(0.3);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-60vh) scale(1.5);
+        opacity:0;
+    }
+
 }
