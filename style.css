@@ -383,7 +383,7 @@ body {
     left: 32%;
 
     width: 40vw;
-    height: 60vh;
+    height: 50vh;
 
     background: transparent;
 
@@ -438,16 +438,16 @@ body {
 
 .cartaPilha{
     position: absolute;
-    height: 82vh;
+    height: 90vh;
     cursor: pointer;
     transition: 0.4s ease;
 }
 
 /* efeito de pilha */
 .cartaPilha:nth-child(1){ transform: translate(0,0); z-index: 24; }
-.cartaPilha:nth-child(2){ transform: translate(-20px,-20px); z-index: 23; }
-.cartaPilha:nth-child(3){ transform: translate(-40px,-40px); z-index: 22; }
-.cartaPilha:nth-child(4){ transform: translate(-60px,-60px); z-index: 21; }
+.cartaPilha:nth-child(2){ transform: translate(-3vh,-3vh); z-index: 23; }
+.cartaPilha:nth-child(3){ transform: translate(-6vh,-6vh); z-index: 22; }
+.cartaPilha:nth-child(4){ transform: translate(-9vh,-9vh); z-index: 21; }
 
 .descoberto{
     filter: grayscale(0%) drop-shadow(0 0 10px white);
