@@ -438,7 +438,7 @@ body {
 
 .cartaPilha{
     position: absolute;
-    height: 90vh;
+    height: 86vh;
     cursor: pointer;
     transition: 0.4s ease;
 }
